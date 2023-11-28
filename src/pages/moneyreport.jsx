@@ -1,10 +1,13 @@
 import * as React from 'react';
-import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import Divider from '@mui/material/Divider';
+import Link from '@mui/material/Link';
 
 function createData(id, periode, pendapatan, pajak, totalpendapatan, status) {
   return { id, periode, pendapatan, pajak, totalpendapatan, status };
@@ -30,14 +33,25 @@ export default function Orders() {
     <React.Fragment>
       <Table size="small">
         <TableHead>
-          <TableRow>
-            <TableCell align="center">Periode</TableCell>
-            <TableCell align="center">Pendapatan</TableCell>
-            <TableCell align="center">Pajak</TableCell>
-            <TableCell align="center">Total Pendapatan</TableCell>
-            <TableCell align="center">Status</TableCell>
+          <TableRow sx={{ borderBottom: '2px solid black' }}>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Periode
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Pendapatan
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Pajak
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Total Pendapatan
+            </TableCell>
+            <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+              Status
+            </TableCell>
           </TableRow>
         </TableHead>
+
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
@@ -50,9 +64,14 @@ export default function Orders() {
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
+      <div style={{ display: 'flex', justifyContent: 'center', paddingTop: '10px', paddingBottom: '10px' }}>
+        <Stack spacing={2}>
+          <Pagination count={5} color="primary" />
+        </Stack>
+      </div>
+      {/* <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
         <div style={{ display: 'flex', justifyContent: 'center' }}>See more orders</div>
-      </Link>
+      </Link> */}
     </React.Fragment>
   );
 }
